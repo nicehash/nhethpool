@@ -1,0 +1,2 @@
+void ethInit();
+void ethUninit();
