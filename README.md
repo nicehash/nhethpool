@@ -13,6 +13,9 @@ NiceHash Ethereum Pool is standalone simple, easy to compile, build&run pool for
 
 This pool only works with EthereumStratum/1.0.0 which is supported by NiceHash. Specifications are in file <a href="https://github.com/nicehash/nhethpool/blob/master/EthereumStratum_NiceHash_v1.0.0.txt">EthereumStratum_NiceHash_v1.0.0.txt</a>.
 
+Compatible miners:
+- https://github.com/nicehash/cpp-ethereum (WIN builds: https://github.com/nicehash/cpp-ethereum/releases)
+
 # <a name="benefits"></a> Features
 
 - Very small server side load.
