@@ -25,6 +25,7 @@ namespace nhethpool
 
         private static void QueryThread()
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             double minerCount;
             double speed;
 
@@ -51,15 +52,6 @@ namespace nhethpool
 
         static void Main(string[] args)
         {
-            //double diff = ShareCheckWrapper.getHashDiff("00000001021C6B811646A3E72C0428B53B747BE36419959127EB95407F09FCE9");
-
-            //string target;
-            //ShareCheckWrapper.diffToTarget(diff, out target);
-            //double diff2 = ShareCheckWrapper.getHashDiff(target);
-
-            //Console.WriteLine(diff.ToString());
-            //Console.WriteLine(diff2.ToString());
-
             System.Threading.Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Logging.StartFileLogging();
             isRunning = true;

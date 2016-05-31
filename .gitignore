@@ -45,3 +45,17 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+*.pdb
+nhethpool/obj/Debug/nhethpool.exe
+*.cache
+nhethpool/obj/Debug/nhethpool.csproj.FileListAbsolute.txt
+*.exe
+nhethpool/obj/Release/nhethpool.csproj.FileListAbsolute.txt
+nhethpool/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+sharecheck/sharecheck.vcxproj.user
+*.obj
+x64/Debug/config.json
+nhethpool.sdf
+3rdparty/cryptopp/lib/cryptopp.lib
+3rdparty/cryptopp/lib/cryptoppd.lib
+nhethpool.v12.suo

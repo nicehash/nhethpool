@@ -51,7 +51,7 @@ namespace nhethpool
             ConfigData.WalletRPCIntervalMS = 500;
             ConfigData.StratumPort = 3333;
             ConfigData.StratumExtranonceSize = 2;
-            ConfigData.StratumDifficulty = 0.001;
+            ConfigData.StratumDifficulty = 0.1;
 
             ConfigData.Instances = new WalletStratum[1];
             ConfigData.Instances[0] = new WalletStratum();

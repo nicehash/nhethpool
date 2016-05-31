@@ -105,12 +105,16 @@ namespace nhethpool
         #region PRIVATE METHODS
         private void ProcessWallet()
         {
+            DateTime before_q = DateTime.Now;
             string[] workdata = Wallet.GetWork(walletUri);
+            DateTime after_q = DateTime.Now;
             if (workdata != null && workdata.Length == 3)
             {
                 // work data received successfully
-                //Logging.Log(4, "Received Eth workdata: seedhash=" + workdata[1] +
-                //    ", headerhash=" + workdata[0] + ", target=" + workdata[2]);
+                Logging.Log(5, "Received Eth workdata: seedhash=" + workdata[1] +
+                    ", headerhash=" + workdata[0] + ", target=" + workdata[2]);
+
+                Logging.Log(5, "RPC time: " + (after_q - before_q).TotalMilliseconds.ToString("F0") + " ms");
 
                 double walletDiff = ShareCheckWrapper.getHashDiff(workdata[2]);
                 Job j = new Job(workdata[1], workdata[0], walletDiff);
@@ -130,7 +134,7 @@ namespace nhethpool
                     if (currentJob.difficulty < minerDiff)
                         minerDiff = currentJob.difficulty;
 
-                    Logging.Log(2, "Setting miner diff to: " + minerDiff.ToString("F4"));
+                    //Logging.Log(2, "Setting miner diff to: " + minerDiff.ToString("F4"));
 
                     // dispatch job to miners
                     lock (locker)
@@ -373,7 +377,7 @@ namespace nhethpool
             if (minernonce.Length != 16 - (Config.ConfigData.StratumExtranonceSize * 2))
                 return;
 
-            Logging.Log(2, "Received share for job: " + jobid + " xn: " + m.extraNonce + " nonce: " + minernonce);
+            Logging.Log(3, "Received share for job: " + jobid + " xn: " + m.extraNonce + " nonce: " + minernonce);
 
             if (jobid != currentJob.uniqueID)
             {
@@ -388,7 +392,7 @@ namespace nhethpool
                     d = ShareCheckWrapper.getShareDiff(j.headerHash, m.extraNonce + minernonce, out mixhash);
                     if (d >= j.difficulty)
                     {
-                        Logging.Log(2, "Submitting possible uncle, nonce: " + m.extraNonce + minernonce);
+                        Logging.Log(1, "Submitting possible uncle, nonce: " + m.extraNonce + minernonce);
                         WalletShare ws = new WalletShare(m.extraNonce + minernonce, j.headerHash, mixhash);
                         bool result;
                         if (!Wallet.SubmitWork(walletUri, ws, out result))
@@ -426,7 +430,7 @@ namespace nhethpool
             else if (d >= currentJob.difficulty)
             {
                 // submit to wallet
-                Logging.Log(2, "Submitting share to the wallet, nonce: " + m.extraNonce + minernonce);
+                Logging.Log(1, "Submitting share to the wallet, nonce: " + m.extraNonce + minernonce + " diff: " + d.ToString("F4") + "/" + currentJob.difficulty.ToString("F4"));
                 WalletShare ws = new WalletShare(m.extraNonce + minernonce, currentJob.headerHash, mixhash);
                 bool result;
                 if (!Wallet.SubmitWork(walletUri, ws, out result))

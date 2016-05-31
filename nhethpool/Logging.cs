@@ -37,7 +37,7 @@ namespace nhethpool
 
         public static void Log(int level, string text)
         {
-            text = "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] " + text;
+            text = "[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff") + "] " + text;
 
             if (level <= Config.ConfigData.LogConsoleLevel)
                 Console.WriteLine(text);
@@ -47,7 +47,7 @@ namespace nhethpool
                 if (file.Position >= (2048 * 1024)) StartFileLogging();
                 if (file == null) return;
                 byte[] buffer = ASCIIEncoding.ASCII.GetBytes(text + "\r\n");
-                file.WriteAsync(buffer, 0, buffer.Length);
+                file.Write(buffer, 0, buffer.Length);
                 file.FlushAsync();
             }
         }
