@@ -53,9 +53,9 @@ namespace nhethpool
                 RPCresponse<string[]> response = JsonConvert.DeserializeObject<RPCresponse<string[]>>(resp);
                 if (response.result != null && response.result.Length == 3)
                 {
-                    response.result[0] = response.result[0].Substring(2);
-                    response.result[1] = response.result[1].Substring(2);
-                    response.result[2] = response.result[2].Substring(2);
+                    response.result[0] = FixString(response.result[0]);
+                    response.result[1] = FixString(response.result[1]);
+                    response.result[2] = FixString(response.result[2]);
                 }
                 return response.result;
             }
@@ -131,6 +131,14 @@ namespace nhethpool
                 Logging.Log(2, "GetWork error: " + ex.Message);
                 return null;
             }
+        }
+
+
+        private static string FixString(string input)
+        {
+            input = input.Substring(2);
+            while (input.Length < 64) input = "0" + input;
+            return input;
         }
     }
 }
