@@ -16,6 +16,11 @@ This pool only works with EthereumStratum/1.0.0 which is supported by NiceHash. 
 Compatible miners:
 - https://github.com/nicehash/cpp-ethereum (WIN builds: https://github.com/nicehash/cpp-ethereum/releases)
 
+To connect miner to the pool, you can use any username and password. Example for ethminer:
+```
+ethminer -S mypool.com:3333 -O anyuser:x ..other parameters..
+```
+
 # <a name="benefits"></a> Features
 
 - Very small server side load.
