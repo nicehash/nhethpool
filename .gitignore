@@ -59,3 +59,9 @@ nhethpool.sdf
 3rdparty/cryptopp/lib/cryptopp.lib
 3rdparty/cryptopp/lib/cryptoppd.lib
 nhethpool.v12.suo
+nhethpool.opensdf
+nhethpool/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+sharecheck/x64/Debug/vc120.idb
+*.tlog
+x64/Release/sharecheck.lib
+x64/Release/nhethpool.exe.config

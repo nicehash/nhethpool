@@ -54,6 +54,8 @@ namespace nhethpool
                 if (smc != null) receivedMessages.Enqueue(smc);
                 else
                 {
+                    Logging.Log(5, "Invalid stratum message: " + line);
+
                     // todo: handle non supported messages?
                 }
             }

@@ -44,14 +44,14 @@ namespace nhethpool
         {
             // Set defaults
             ConfigData = new Config();
-            ConfigData.LogConsoleLevel = 4;
+            ConfigData.LogConsoleLevel = 2;
             ConfigData.LogFileLevel = 5;
             ConfigData.LogFileFolder = "logs";
-            ConfigData.DAGFolder = "D:\\DAGs";
+            ConfigData.DAGFolder = "DAGs";
             ConfigData.WalletRPCIntervalMS = 500;
             ConfigData.StratumPort = 3333;
             ConfigData.StratumExtranonceSize = 2;
-            ConfigData.StratumDifficulty = 0.1;
+            ConfigData.StratumDifficulty = 1;
 
             ConfigData.Instances = new WalletStratum[1];
             ConfigData.Instances[0] = new WalletStratum();
